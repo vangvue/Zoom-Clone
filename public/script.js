@@ -69,7 +69,7 @@ const addVideoStream = (video, stream) => {
 
 const scrollToBottom = () => {
     let d = $(".main__chat__window");
-    d.scrollToTop(d.prop("scrollHeight"));
+    d.scrollTop(d.prop("scrollHeight"));
 }
 
 const muteUnmute = () => {
