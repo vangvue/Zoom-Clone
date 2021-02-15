@@ -46,8 +46,17 @@ navigator.mediaDevices.getUserMedia({
       socket.username = data.username;
     })
 
+    let userName = "";
+
+    const newUserConnected = (user) => {
+      userName = user || `User${Math.floor(Math.random() * 1000000)}`;
+      socket.emit("new user", userName);
+    }
+
+    newUserConnected();
+
     socket.on("createMessage", (message) => {
-        $("ul").append(`<li class="message"><b>${socket.username}</b><br/>${message}</li>`)
+        $("ul").append(`<li class="message"><b>${userName}</b><br/>${message}</li>`)
         scrollToBottom();
     })
 })
