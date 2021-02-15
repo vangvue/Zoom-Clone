@@ -6,8 +6,9 @@ myVideo.muted = true;
 var peer = new Peer(undefined, {
     path: "/peerjs",
     host: "/",
-    port: "443"
+    port: "3000"
 });
+
 
 let myVideoStream;
 navigator.mediaDevices.getUserMedia({
@@ -40,8 +41,13 @@ navigator.mediaDevices.getUserMedia({
         }
     })
 
+    socket.username = "Anonymous";
+    socket.on("change_username", (data) => {
+      socket.username = data.username;
+    })
+
     socket.on("createMessage", (message) => {
-        $("ul").append(`<li class="message"><b>User</b><br/>${message}</li>`)
+        $("ul").append(`<li class="message"><b>${socket.username}</b><br/>${message}</li>`)
         scrollToBottom();
     })
 })
