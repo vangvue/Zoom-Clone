@@ -19,6 +19,10 @@ app.get("/:room", (req, res) => {
     res.render("room", { roomId: req.params.room })
 })
 
+app.get('/close', (req, res) => {
+    res.send("<script>window.close();</script > ")
+})
+
 io.on("connection", socket => {
     socket.on("join-room", (roomId, userId) => {
         socket.join(roomId);
