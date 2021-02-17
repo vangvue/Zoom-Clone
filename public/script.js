@@ -30,6 +30,7 @@ navigator.mediaDevices.getUserMedia({
 
     socket.on("user-connected", (userId) => {
         connectToNewUser(userId, stream);
+
     })
 
     let text = $("input");
@@ -78,6 +79,7 @@ const connectToNewUser = (userId, stream) => {
     call.on("close", () => {
         video.remove();
     })
+
     peers[userId] = call;
 }
 
