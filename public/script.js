@@ -7,7 +7,7 @@ const peers = {}
 var peer = new Peer(undefined, {
     path: "/peerjs",
     host: "/",
-    port: "443"
+    port: "3000"
 });
 
 
@@ -78,7 +78,6 @@ const connectToNewUser = (userId, stream) => {
     call.on("close", () => {
         video.remove();
     })
-
     peers[userId] = call;
 }
 
